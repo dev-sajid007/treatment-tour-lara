@@ -1,0 +1,219 @@
+.order-card {
+    color: #fff;
+}
+
+.bg-c-blue {
+    background: linear-gradient(45deg,#4099ff,#73b4ff);
+}
+
+.bg-c-green {
+    background: linear-gradient(45deg,#2ed8b6,#59e0c5);
+}
+
+.bg-c-yellow {
+    background: linear-gradient(45deg,#FFB64D,#ffcb80);
+}
+
+.bg-c-pink {
+    background: linear-gradient(45deg,#FF5370,#ff869a);
+}
+
+
+.card {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+    box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+    border: none;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.card .card-block {
+    padding: 25px;
+}
+
+.order-card i {
+    font-size: 26px;
+}
+
+.f-left {
+    float: left;
+}
+
+.f-right {
+    float: right;
+}
+
+.top-header-button a{
+    width: 200px;
+}
+.tooltip-inner {
+    font-size: 16px !important;
+    max-width: 350px !important;
+}
+
+   /* Preloader styles */
+   #preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#preloader img {
+    width: 150px;
+    height: 150px;
+}
+.text-danger strong {
+    color: #9f181c;
+}
+.receipt-main {
+    background: #ffffff none repeat scroll 0 0;
+    border-bottom: 12px solid #333333;
+    border-top: 12px solid #9f181c;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 40px 30px !important;
+    position: relative;
+    box-shadow: 0 1px 21px #acacac;
+    color: #333333;
+    font-family: open sans;
+}
+.receipt-main p {
+    color: #333333;
+    font-family: open sans;
+    line-height: 1.42857;
+}
+.receipt-footer h1 {
+    font-size: 15px;
+    font-weight: 400 !important;
+    margin: 0 !important;
+}
+.receipt-main::after {
+    background: #414143 none repeat scroll 0 0;
+    content: "";
+    height: 5px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: -13px;
+}
+.receipt-main thead {
+    background: #414143 none repeat scroll 0 0;
+}
+
+.receipt-right h5 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 7px 0;
+}
+.receipt-right p {
+    font-size: 12px;
+    margin: 0px;
+}
+.receipt-right p i {
+    text-align: center;
+    width: 18px;
+}
+.receipt-main td {
+    padding: 9px 20px !important;
+}
+.receipt-main th {
+    padding: 13px 20px !important;
+}
+.receipt-main td {
+    font-size: 13px;
+    font-weight: initial !important;
+}
+.receipt-main td p:last-child {
+    margin: 0;
+    padding: 0;
+}	
+.receipt-main td h2 {
+    font-size: 20px;
+    font-weight: 900;
+    margin: 0;
+    text-transform: uppercase;
+}
+.receipt-header-mid .receipt-left h1 {
+    font-weight: 100;
+    margin: 34px 0 0;
+    text-align: right;
+    text-transform: uppercase;
+}
+.receipt-header-mid {
+    margin: 24px 0;
+    overflow: hidden;
+}
+
+#container {
+    background-color: #dcdcdc;
+}
+
+@media (max-width: 769px) {
+    .add-sale {
+        display: none;
+    }
+}
+
+
+/* Invoice  */
+
+.invoice-box {
+    max-width: 800px;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #eee;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    color: #555;
+}
+.invoice-box table {
+    width: 100%;
+    line-height: inherit;
+    text-align: left;
+}
+.invoice-box table td {
+    padding: 5px;
+    vertical-align: top;
+}
+.invoice-box table tr td:nth-child(3) {
+    text-align: right;
+}
+.invoice-box table tr.top table td {
+    padding-bottom: 20px;
+}
+.invoice-box table tr.top table td.title {
+    font-size: 45px;
+    line-height: 45px;
+    color: #333;
+}
+.invoice-box table tr.information table td {
+    padding-bottom: 40px;
+}
+.invoice-box table tr.heading td {
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+}
+.invoice-box table tr.details td {
+    padding-bottom: 20px;
+}
+.invoice-box table tr.item td {
+    border-bottom: 1px solid #eee;
+}
+.invoice-box table tr.item.last td {
+    border-bottom: none;
+}
+.invoice-box table tr.total td:nth-child(2) {
+    border-top: 2px solid #eee;
+    font-weight: bold;
+}

@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class FreeQuote extends Model
+{
+    use HasFactory;
+
+
+    protected $fillable = [
+        'name',
+        'email',
+        'phone',
+        'destination',
+        'treatment',
+        'agreed_to_terms',
+    ];
+}

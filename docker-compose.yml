@@ -1,0 +1,88 @@
+# Local development stack for tt-lara-admin.
+# DB_DATABASE / DB_USERNAME / DB_PASSWORD are read from the project's .env file.
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    image: tt-lara-admin-app
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www/html
+    environment:
+      # Point Laravel at the containers instead of 127.0.0.1 (overrides .env)
+      DB_HOST: mysql
+      DB_PORT: 3306
+      APP_URL: http://localhost:${APP_PORT:-8000}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - tt
+
+  nginx:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-8000}:80"
+    volumes:
+      - ./:/var/www/html:ro
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - app
+    networks:
+      - tt
+
+  mysql:
+    image: mysql:8.0
+    restart: unless-stopped
+    ports:
+      - "${FORWARD_DB_PORT:-3307}:3306"
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    networks:
+      - tt
+
+  phpmyadmin:
+    image: phpmyadmin:5
+    restart: unless-stopped
+    ports:
+      - "${FORWARD_PMA_PORT:-8080}:80"
+    environment:
+      PMA_HOST: mysql
+      UPLOAD_LIMIT: 256M
+    depends_on:
+      - mysql
+    networks:
+      - tt
+
+  # Builds frontend assets on demand: docker compose run --rm node npm run build
+  node:
+    image: node:20
+    working_dir: /var/www/html
+    user: "${UID:-1000}:${GID:-1000}"
+    volumes:
+      - ./:/var/www/html
+    profiles:
+      - tools
+    networks:
+      - tt
+
+volumes:
+  mysql-data:
+
+networks:
+  tt:
